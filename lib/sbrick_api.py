@@ -254,7 +254,6 @@ class SbrickAPI(object):
         # TODO: validate parameters
         self._logger.debug('Stop action')
         for channel in channels:
-            print("Killing thread %d", channel)
             thd = self._channel_thread[channel]
             if thd:
                 thd.stop()
