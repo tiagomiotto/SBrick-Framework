@@ -385,7 +385,11 @@ class SbrickAPI(object):
 
         ret['temperature'] = self._temperature
         ret['voltage'] = self._voltage
-        self.disconnect()
+        # The disconnect here just messes everything up if you are driving and
+        # requests the info from the ADC.
+        # If the info is requested when there is no other command running the 
+        # SBRICK will disconnect automatically after the keep-alive time is up
+        # anyway
         return ret
 
 
